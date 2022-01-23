@@ -3,15 +3,18 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+  "scripts": { 
     "build": "webpack",
-    "start": "webpack serve --mode development --static ./dist --config webpack.config.js --live-reload --color"
+    "start": "webpack serve --mode development --static ./dist --config webpack.config.js --live-reload --color",
+    "test": "jest ./src/app.test.js --config jest.config.js --watch",
+    "test:build": "npm run build && jest ./src/app.test.js --config jest.config.js"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "css-loader": "^6.5.1",
+    "jest": "^27.4.7",
+    "jest-puppeteer": "^6.0.3",
     "sass": "^1.49.0",
     "sass-loader": "^12.4.0",
     "style-loader": "^3.3.1",
