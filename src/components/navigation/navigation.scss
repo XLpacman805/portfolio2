@@ -1,3 +1,5 @@
+$active-color: #ff0000;
+
 nav {
     display: flex;
     justify-content: space-between;
@@ -19,14 +21,22 @@ nav {
         li {
             margin-left: 20px;
             list-style: none;
-            a {
-                text-decoration: none;
+            text-decoration: none;
+            color: black;
+            font-size: 1.2em;
+            font-weight: bold;
+            &:hover {
+                background-color: $active-color;
+            }
+        }
+
+        .active {
+            color: $active-color;
+            text-decoration: underline;
+
+            &:hover {
+                background-color: $active-color;
                 color: black;
-                font-size: 1.2em;
-                font-weight: bold;
-                &:hover {
-                    color: #ff0000;
-                }
             }
         }
     }
