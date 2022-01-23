@@ -37,7 +37,7 @@ class App extends HTMLElement {
 
     render() {
         this.innerHTML = `
-            <navigation-jmdev navigation-id="${this.navigationId}"></navigation-jmdev>
+            <navigation-jmdev navigation-id="${this.navigationId}" aria-label="navigation container"></navigation-jmdev>
             ${navigations.get(this.navigationId)}
         `;
 
