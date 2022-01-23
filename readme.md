@@ -6,7 +6,7 @@ To Do
 
 [x - Make navigation bar accessible.
 
-[] - Add "Recommendations" section to the "me" page.
+[wip] - Add "Recommendations" section to the "me" page.
 
 [] - Add "About Me" section to the "me" page.
 
