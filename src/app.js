@@ -12,11 +12,13 @@ class App extends HTMLElement {
     constructor() {
         super();
         this.navigationId = 'me';
+        this.elementFocusQuery = null;
     }
 
     connectedCallback() {
         this.render();
     }
+
 
     setNavigationId(id) {
         if (navigations.has(id)){
@@ -25,11 +27,26 @@ class App extends HTMLElement {
         }
     }
 
+    /**
+     * Used for setting focus on the element when the page is loaded.
+     * @param {string} query 
+     */
+    setElementFocusQuery(query) {
+        this.elementFocusQuery = query;
+    }
+
     render() {
         this.innerHTML = `
             <navigation-jmdev navigation-id="${this.navigationId}"></navigation-jmdev>
             ${navigations.get(this.navigationId)}
         `;
+
+        if (this.elementFocusQuery) {
+            const element = this.querySelector(this.elementFocusQuery);
+            if (element) {
+                element.focus();
+            }
+        }
     }
 }
 

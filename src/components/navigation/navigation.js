@@ -20,7 +20,7 @@ const navigationData = [
 const createListItems = (navigationData, navigationId) => {
     return navigationData.map(item => {
         return `
-            <li ${item.id === navigationId ? 'class="active"' : ''} data-id="${item.id}">
+            <li id="nav-${item.id}" tabindex="0" ${item.id === navigationId ? 'class="active"' : ''} data-id="${item.id}">
                 ${item.text}
             </li>
         `;
@@ -39,10 +39,21 @@ class Navigation extends HTMLElement {
         this.render();
     }
 
-    handleClick(e) { 
+    handleClick(e, options = {elementFocusQuery: false}) { 
         if (e.target.tagName === 'LI' && e.target.dataset.id !== this.active) {
+            // Ensure the element will be focused upon next render.
+            if (options.elementFocusQuery) {
+                app.setElementFocusQuery(options.elementFocusQuery);
+            }
+
             this.active = e.target.dataset.id;
             app.setNavigationId(e.target.dataset.id);
+        }
+    }
+
+    handleKeydown(e) {
+        if (e.key === 'Enter') {
+            this.handleClick(e, {elementFocusQuery: '#' + e.target.id});
         }
     }
 
@@ -57,7 +68,9 @@ class Navigation extends HTMLElement {
         `;
 
         this.removeEventListener('click', this.handleClick);
+        this.removeEventListener('keydown', this.handleKeydown);
         this.addEventListener('click', this.handleClick);
+        this.addEventListener('keydown', this.handleKeydown);
     }
 }
 

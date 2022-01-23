@@ -26,6 +26,7 @@ nav {
             color: black;
             font-size: 1.2em;
             font-weight: bold;
+            &:focus,
             &:hover {
                 background-color: $active-color;
             }
@@ -35,6 +36,7 @@ nav {
             color: $active-color;
             text-decoration: underline;
 
+            &:focus,
             &:hover {
                 background-color: $active-color;
                 color: black;
