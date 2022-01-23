@@ -1,5 +1,7 @@
 import './navigation.scss';
 
+const app = document.querySelector('app-jmdev');
+
 const navigationData = [
     {
         id: 'me',
@@ -15,10 +17,10 @@ const navigationData = [
     }
 ];
 
-const createListItems = (navigationData, activeId) => {
+const createListItems = (navigationData, navigationId) => {
     return navigationData.map(item => {
         return `
-            <li ${item.id === activeId ? 'class="active"' : ''} data-id="${item.id}">
+            <li ${item.id === navigationId ? 'class="active"' : ''} data-id="${item.id}">
                 ${item.text}
             </li>
         `;
@@ -30,7 +32,7 @@ class Navigation extends HTMLElement {
     constructor() {
         super();
         this.render = this.render.bind(this);
-        this.active = navigationData[0].id;
+        this.active = this.getAttribute('navigation-id') || navigationData[0].id;
     }
 
     connectedCallback() {
@@ -41,7 +43,7 @@ class Navigation extends HTMLElement {
         console.log(e.target.dataset);
         if (e.target.tagName === 'LI' && e.target.dataset.id !== this.active) {
             this.active = e.target.dataset.id;
-            this.render();
+            app.setNavigationId(e.target.dataset.id);
         }
     }
 

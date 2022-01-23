@@ -2,9 +2,7 @@ import './styles.scss';
 import './components/navigation/navigation.js';
 import './components/me/me.js';
 
-
-
-const activeSections = new Map([ // value is the custom element
+const navigations = new Map([ // value is the custom element
     ['me', '<me-jmdev></me-jmdev>'],
     ['projects', true],
     ['contact', true]
@@ -13,25 +11,24 @@ const activeSections = new Map([ // value is the custom element
 class App extends HTMLElement {
     constructor() {
         super();
-        this.activeSection = activeSections.get('me');
+        this.navigationId = 'me';
     }
 
     connectedCallback() {
         this.render();
     }
 
-    createActiveSection(section) {
-        return `
-            <section id="${section.id}">
-                ${this}
-            </section>
-        `;
+    setNavigationId(id) {
+        if (navigations.has(id)){
+            this.navigationId = id;
+            this.render();
+        }
     }
 
     render() {
         this.innerHTML = `
-            <navigation-jmdev></navigation-jmdev>
-            ${this.activeSection}
+            <navigation-jmdev navigation-id="${this.navigationId}"></navigation-jmdev>
+            ${navigations.get(this.navigationId)}
         `;
     }
 }
