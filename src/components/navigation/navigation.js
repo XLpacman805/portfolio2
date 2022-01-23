@@ -2,15 +2,15 @@ import './navigation.scss';
 
 const navigationData = [
     {
-        id: 'nav-me',
+        id: 'me',
         text: 'Me'
     },
     {
-        id: 'nav-projects',
+        id: 'projects',
         text: 'Projects'
     },
     {
-        id: 'nav-contact',
+        id: 'contact',
         text: 'Contact'
     }
 ];
@@ -18,7 +18,7 @@ const navigationData = [
 const createListItems = (navigationData, activeId) => {
     return navigationData.map(item => {
         return `
-            <li ${item.id === activeId ? 'class="active"' : ''} id="${item.id}">
+            <li ${item.id === activeId ? 'class="active"' : ''} data-id="${item.id}">
                 ${item.text}
             </li>
         `;
@@ -38,8 +38,9 @@ class Navigation extends HTMLElement {
     }
 
     handleClick(e) { 
-        if (e.target.tagName === 'LI' && e.target.id !== this.active) {
-            this.active = e.target.id;
+        console.log(e.target.dataset);
+        if (e.target.tagName === 'LI' && e.target.dataset.id !== this.active) {
+            this.active = e.target.dataset.id;
             this.render();
         }
     }
