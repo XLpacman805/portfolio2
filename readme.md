@@ -6,7 +6,9 @@ To Do
 
 [x] - Make navigation bar accessible.
 
-[wip] - Make navigation responsive.
+[wip] - Add testing (should've done this from the beginning but now is better than never).
+
+[] - Make navigation responsive.
 
 [] - Make the "profile" section responsive in the "me" page.
 
