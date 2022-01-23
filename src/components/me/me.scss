@@ -1,3 +1,42 @@
 section.me {
+    margin-top: 1rem;
+    padding: 20px;
     background-color: white;
+
+    div.profile-card {
+        display: flex;
+
+        img.profile{
+            width: 100%;
+            height: auto;
+        }
+
+        div.profile-info {
+            justify-items: center;
+            margin-bottom: auto;
+            padding-left: 2rem;
+
+            h2 {
+                padding: 0px;
+                margin: 3% 0px;
+            }
+
+            ul {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+
+                li {
+                    display: flex;
+                    align-items: center;
+                    margin-bottom: 0.5rem;
+
+                    span {
+                        margin-right: 0.5rem;
+                    }
+                }
+            }
+        }
+    }
+
 }
