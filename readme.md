@@ -4,9 +4,13 @@ Redoing my portfolio site. I hate the old one. This one is build with modern Jav
 
 To Do
 
-[x - Make navigation bar accessible.
+[x] - Make navigation bar accessible.
 
-[wip] - Add "Recommendations" section to the "me" page.
+[wip] - Make navigation responsive.
+
+[] - Make the "profile" section responsive in the "me" page.
+
+[] - Add "Recommendations" section to the "me" page.
 
 [] - Add "About Me" section to the "me" page.
 
