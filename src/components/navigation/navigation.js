@@ -40,7 +40,6 @@ class Navigation extends HTMLElement {
     }
 
     handleClick(e) { 
-        console.log(e.target.dataset);
         if (e.target.tagName === 'LI' && e.target.dataset.id !== this.active) {
             this.active = e.target.dataset.id;
             app.setNavigationId(e.target.dataset.id);
