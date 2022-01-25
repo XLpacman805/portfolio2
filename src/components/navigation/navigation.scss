@@ -1,46 +1,75 @@
+@use 'sass:map';
 @import '../../variables.scss';
-$active-color: #ff0000;
+@import '../../mixins.scss';
 
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: $container-padding;
-    height: 60px;
-    background-color: white;
 
-    h1.home {
-        max-width: 33%;
+nav.navigation.desktop {
+    display: none;
+    @include media-breakpoint-up(map.get($breakpoints,'lg')) {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: $container-padding;
+        height: 60px;
+        background-color: white;
+    
+        h1.home {
+            max-width: 33%;
+        }
+    
+        ul.root-ul {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            min-width: 66%;
+    
+            li {
+                margin-left: 20px;
+                list-style: none;
+                text-decoration: none;
+                color: black;
+                font-size: 1.2em;
+                font-weight: bold;
+                &:focus,
+                &:hover {
+                    background-color: $active-color;
+                }
+            }
+    
+            .active {
+                color: $active-color;
+                text-decoration: underline;
+    
+                &:focus,
+                &:hover {
+                    background-color: $active-color;
+                    color: black;
+                }
+            }
+        }
+    }
+}
+
+nav.navigation.mobile {
+    @include media-breakpoint-up(map.get($breakpoints,'lg')) {
+        display: none;
     }
 
-    ul.root-ul {
-        display: flex;
-        justify-content: flex-end;
-        align-items: center;
-        min-width: 66%;
+    display: flex;
+    height: 60px;
+    align-items: center;
+    background-color: white;
+    padding: 0px 2px;
 
-        li {
-            margin-left: 20px;
-            list-style: none;
-            text-decoration: none;
-            color: black;
-            font-size: 1.2em;
-            font-weight: bold;
-            &:focus,
-            &:hover {
-                background-color: $active-color;
-            }
-        }
+    h1.home {
+        padding: 0px 10px;
+        font-size: large;
+    }
 
-        .active {
-            color: $active-color;
-            text-decoration: underline;
-
-            &:focus,
-            &:hover {
-                background-color: $active-color;
-                color: black;
-            }
-        }
+    button.open-slideout {
+        height: 100%;
+        width: 40px;
+        background-color: transparent;
+        border: none;
     }
 }

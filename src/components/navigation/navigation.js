@@ -1,38 +1,31 @@
 import './navigation.scss';
-
 const app = document.querySelector('app-jmdev');
+const openSlideoutSelector = 'button.open-slideout';
 
-const navigationData = [
-    {
-        id: 'me',
-        text: 'Me'
-    },
-    {
-        id: 'projects',
-        text: 'Projects'
-    },
-    {
-        id: 'contact',
-        text: 'Contact'
-    }
-];
-
-const createListItems = (navigationData, navigationId) => {
-    return navigationData.map(item => {
-        return `
-            <li id="nav-${item.id}" tabindex="0" ${item.id === navigationId ? 'class="active"' : ''} data-id="${item.id}">
-                ${item.text}
+/**
+ * Create the HTML for the navigation items. Expects the app.js's getNavigations() to return a Map.
+ * @param {Map} navigations 
+ * @param {String} navigationId 
+ * @returns 
+ */
+const createListItems = (navigations, navigationId) => {
+    let html = '';
+    for (const [key, value] of navigations) {
+        html += `
+            <li id="nav-${key}" tabindex="0" ${key === navigationId ? 'class="active"' : ''} data-id="${key}">
+                ${value.name}
             </li>
         `;
-    }).join('');
-};
+    }
+    return html;
+}
 
 // create custom element
 class Navigation extends HTMLElement {
     constructor() {
         super();
         this.render = this.render.bind(this);
-        this.active = this.getAttribute('navigation-id') || navigationData[0].id;
+        this.active = this.getAttribute('navigation-id');
     }
 
     connectedCallback() {
@@ -49,6 +42,10 @@ class Navigation extends HTMLElement {
             this.active = e.target.dataset.id;
             app.setNavigationId(e.target.dataset.id);
         }
+
+        if (e.target.closest(openSlideoutSelector)) {
+            app.toggleNavigationSlideout();
+        }
     }
 
     handleKeydown(e) {
@@ -59,10 +56,15 @@ class Navigation extends HTMLElement {
 
     render() {
         this.innerHTML = `
-            <nav>
+            <nav class="navigation mobile">
+                <button aria-label="open slideout" class="open-slideout"> <i class="fas fa-bars"></i> </button>
+                <h1 class="home"> johnnyMezaDev.com </h1>
+            </nav>
+
+            <nav class="navigation desktop">
                 <h1 class="home">johnnyMezaDev.com</h1>
                     <ul class="root-ul">
-                        ${createListItems(navigationData, this.active)} 
+                        ${createListItems(app.getNavigations(), this.active)} 
                     </ul>
             </nav>
         `;

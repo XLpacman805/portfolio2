@@ -1,0 +1,59 @@
+@use 'sass:map';
+@import '../../variables.scss';
+@import '../../mixins.scss';
+
+div.navigation-slideout-container {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: 99;
+
+    div.navigation-slideout {
+        max-width: 100%;
+        min-width: 75%;
+        height: 100%;
+        background-color: white;
+        z-index: 100;
+        position: fixed;
+        box-shadow: 15px 15px 20px 0px rgba(0, 0, 0, 0.8);
+
+        div.navigation-slideout-header {
+            display: flex;
+            max-width: 100%;
+            height: 60px;
+            border-bottom: 1px solid gray;
+
+            button.close-slideout {
+                margin-left: 10px;
+                background-color: transparent;
+                border: none;
+            }
+
+            h1 {
+                padding-top: 1%;;
+                font-size: 0.9rem;
+                margin-left: 3px;
+            }
+        }
+
+        ul.navigation-slideout-menu {
+            padding: 0px 0px 0px 20px;
+            li {
+                list-style: none;
+                font-weight: bold;
+                margin: 12% 0px;
+                text-decoration: underline;
+
+                &.active {
+                    color: $active-color;
+                }
+            }
+            
+            @include media-breakpoint-up(map.get($breakpoints,'md')) {
+                li {
+                    margin: 5% 0px;
+                }
+            }
+        }
+    }
+}

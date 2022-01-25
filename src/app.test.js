@@ -1,5 +1,5 @@
 const path = require('path');
-const isWatchMode = process.argv.includes('--watch');
+const isWatchMode = process.argv.includes('--watch') || process.argv.includes(`${path.join(__dirname, '../node_modules/jest-worker/build/workers/processChild.js')}`); // assuming this jest-worker builder is used when in watch mode and not when running jest directly.
 process.env.indexPath = isWatchMode ? 'http://localhost:8080/' : `file:${path.join(__dirname, '../dist/index.html')}`;
 
 describe('Page Renders', () => {
@@ -15,3 +15,4 @@ describe('Page Renders', () => {
 });
 
 require('./components/navigation/navigation.test.js');
+require('./components/navigation-slideout/navigation-slideout.test.js');

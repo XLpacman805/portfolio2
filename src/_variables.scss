@@ -1,6 +1,7 @@
 // Colors
 $bg-color: #eeeeee;
 $dot-color: black;
+$active-color: #ff0000;
 
 // Dimensions
 $dot-size: 1px;
@@ -8,3 +9,12 @@ $dot-space: 22px;
 
 // Common
 $container-padding: 0px 20px;
+
+$breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px
+);

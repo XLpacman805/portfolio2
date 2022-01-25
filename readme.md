@@ -8,9 +8,9 @@ To Do
 
 [x] - Add testing (should've done this from the beginning but now is better than never).
 
-[wip] - Make navigation responsive.
+[x] - Make navigation responsive.
 
-[] - Make the "profile" section responsive in the "me" page.
+[wip] - Make the "profile" section responsive in the "me" page.
 
 [] - Add "Recommendations" section to the "me" page.
 
