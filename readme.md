@@ -10,9 +10,9 @@ To Do
 
 [x] - Make navigation responsive.
 
-[wip] - Make the "profile" section responsive in the "me" page.
+[x] - Make the "profile" section responsive in the "me" page.
 
-[] - Add "Recommendations" section to the "me" page.
+[wip] - Add "Recommendations" section to the "me" page.
 
 [] - Add "About Me" section to the "me" page.
 

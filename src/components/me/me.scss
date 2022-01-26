@@ -1,3 +1,7 @@
+@use 'sass:map';
+@import '../../variables.scss';
+@import '../../mixins.scss';
+
 section.me {
     margin-top: 1rem;
     padding: 20px;
@@ -5,16 +9,20 @@ section.me {
 
     div.profile-card {
         display: flex;
+        flex-direction: column;
+        align-items: center;
 
-        img.profile{
+        div.profile-picture {
             width: 100%;
-            height: auto;
+
+            img.profile {
+                width: 100%;
+                height: auto;
+            }
         }
 
         div.profile-info {
-            justify-items: center;
-            margin-bottom: auto;
-            padding-left: 2rem;
+            text-align: center;
 
             h2 {
                 padding: 0px;
@@ -35,6 +43,20 @@ section.me {
                         margin-right: 0.5rem;
                     }
                 }
+            }
+        }
+
+        @include media-breakpoint-up(map.get($breakpoints,'md')) {
+            flex-direction: row;
+            div.profile-picture {
+                width: 30%;
+            }
+
+            div.profile-info {
+                text-align: start;
+                justify-items: center;
+                margin-bottom: auto;
+                padding-left: 2rem;
             }
         }
     }
