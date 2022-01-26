@@ -3,6 +3,7 @@ import '@fortawesome/fontawesome-free/js/all.js';
 import './components/navigation-slideout/navigation-slideout.js';
 import './components/navigation/navigation.js';
 import './components/me/me.js';
+import './components/recommendations/recommendations.js';
 
 class App extends HTMLElement {
     constructor() {

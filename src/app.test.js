@@ -16,3 +16,4 @@ describe('Page Renders', () => {
 
 require('./components/navigation/navigation.test.js');
 require('./components/navigation-slideout/navigation-slideout.test.js');
+require('./components/recommendations/recommendations.test.js');

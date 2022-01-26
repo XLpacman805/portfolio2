@@ -39,6 +39,8 @@ class Me extends HTMLElement {
                         </ul>
                     </div>
                 </div>
+
+                <recommendations-jmdev></recommendations-jmdev>
             </section>
         `;
     }
