@@ -12,7 +12,7 @@ To Do
 
 [x] - Make the "profile" section responsive in the "me" page.
 
-[wip] - Add "Recommendations" section to the "me" page.
+[x] - Add "Recommendations" section to the "me" page.
 
 [] - Add "About Me" section to the "me" page.
 

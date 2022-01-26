@@ -53,6 +53,10 @@ class Recommendations extends HTMLElement {
         this.render();
     }
 
+    truncateText(text, limit = 200) {
+        return text.length > limit ? text.substring(0, limit) + '...' : text;
+    }
+
     createRecommendationsHTML() {
         return this.recommendationData.map(recommendation => {
             return `
@@ -65,7 +69,7 @@ class Recommendations extends HTMLElement {
                         </div>
                     </div>
                     <div class="content">
-                        <p>${recommendation.recommendationText}</p>
+                        <p>"${this.truncateText(recommendation.recommendationText, 478)}"</p>
                     </div>
                 </div>
             `;
@@ -74,14 +78,16 @@ class Recommendations extends HTMLElement {
 
     render() {
         this.innerHTML = `
-            <h2> Recommendations </h2>
-            <div class="scrollbox">
-                ${this.createRecommendationsHTML()}
-            </div>
+            <section id="recommendations">
+                <h2> Recommendations </h2>
+                <div class="scrollbox">
+                    ${this.createRecommendationsHTML()}
+                </div>
 
-            <div class="linkedin-link">
-                <a target="_blank" href="https://www.linkedin.com/in/johnny-meza-9641b8139/">View on LinkedIn</a>
-            </div>
+                <div class="linkedin-link">
+                    <a target="_blank" href="https://www.linkedin.com/in/johnny-meza-9641b8139/">View on LinkedIn</a>
+                </div>
+            </section>
         `;
     }
 }
